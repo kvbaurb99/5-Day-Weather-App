@@ -65,7 +65,7 @@ export default function Main() {
         { weatherData.list && weatherData.list.length ?
         <>
         <CurrentWeather weatherData={weatherData} />
-        <div className='flex flex-col md:flex-row gap-10'>
+        <div className='flex flex-col-reverse md:flex-row gap-10'>
             <WeatherDetails weatherData={weatherData} />
             <DailyTemp weatherData={weatherData} currentTemp={currentTemp} />
         </div>
