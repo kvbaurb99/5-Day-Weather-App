@@ -17,5 +17,10 @@ Weather App with 5 days and 3 hours forecast, created with OpenWeather API.
 - Tailwind CSS
 - Axios for fetching data
 
+## In progress
+- Fahrenheit temperature
+- Google Places for showing images for displayed city
+- Dark Mode (?)
+
 ## Live page
 Page deployed on Netfliy: https://weather-kvbaurb-99.netlify.app/
