@@ -8,7 +8,6 @@ import DarkSwitch from '../utils/DarkSwitch';
 export default function TopBar({setCityReg, findWeather, cityReg, currentTemp, isCelsius, handleToggle, setIsDark, isDark}) {
 
     const [searchInput , setSearchInput] = useState('')
-    console.log(currentTemp)
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();

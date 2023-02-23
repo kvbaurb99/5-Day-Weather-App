@@ -22,7 +22,7 @@ export default function Main() {
             const { latitude, longitude } = position.coords;
     
             axios
-              .get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=d35a78bd1d0ecc091d1ec60b14ee7345`)
+              .get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${process.env.REACT_APP_OPENWEATHER_API}`)
               .then((res) => {
                 const cityName = res.data[0].name;
                 setCityReg(cityName);
@@ -30,11 +30,12 @@ export default function Main() {
           });
         }
       }, []);
+
     
       useEffect(() => {
         if (cityReg) {
           axios
-            .get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=${isCelsius ? 'metric' : 'imperial'}&appid=d35a78bd1d0ecc091d1ec60b14ee7345`)
+            .get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=${isCelsius ? 'metric' : 'imperial'}&appid=${process.env.REACT_APP_OPENWEATHER_API}`)
             .then((res) => {
               setWeatherData(res.data);
               setCurrentTemp(res.data?.list?.[0]?.main?.temp);
@@ -46,10 +47,11 @@ export default function Main() {
       }, [cityReg, isCelsius, currentTemp]);
 
 
+
     // function for finding weather data
     const findWeather = (e) => {
         e.preventDefault()
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=metric&appid=d35a78bd1d0ecc091d1ec60b14ee7345`).then(res => {
+        axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`).then(res => {
             setWeatherData(res.data)
         })
     }

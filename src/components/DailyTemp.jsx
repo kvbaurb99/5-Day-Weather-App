@@ -7,9 +7,7 @@ import { useRef } from 'react';
 export default function DailyTemp({ weatherData, currentTemp, isCelsius, isDark }) {
     const [daysData, setDaysData] = useState([]);
     const containerRef = useRef(null);
-
-    console.log(daysData)
-  
+ 
     useEffect(() => {
       setDaysData(weatherData.list);
     }, [weatherData]);
@@ -25,7 +23,8 @@ export default function DailyTemp({ weatherData, currentTemp, isCelsius, isDark 
         containerRef.current.scrollLeft += 500; 
       }
     };
-    console.log(isCelsius)
+
+
     return (
       <div   className={`md:w-[73%] h-[240px] rounded-xl mt-8 flex flex-col shadow-lg ${isDark ? 'shadow-gray-800' : 'shadow-gray-500'} relative ${
         isCelsius
