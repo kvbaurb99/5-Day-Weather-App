@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Spring from '../images/spring.jpg'
 import Hot from '../images/hot.jpg'
 import Winter from '../images/winter.jpg'
-import NightWinter from '../images/nightwinter.jpg'
 
 export default function CurrentWeather({ weatherData, isCelsius, isDark }) {
 

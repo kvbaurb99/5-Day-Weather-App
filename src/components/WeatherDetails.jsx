@@ -1,5 +1,4 @@
 import React from 'react'
-import { GiWaterDrop } from 'react-icons/gi'
 import { BsWind, BsEmojiSmile, BsDropletFill } from 'react-icons/bs'
 import { TbGauge } from 'react-icons/tb'
 

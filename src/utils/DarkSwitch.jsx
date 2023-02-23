@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 export default function DarkSwitch({isDark, setIsDark}) {
