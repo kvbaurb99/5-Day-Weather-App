@@ -59,6 +59,10 @@ export default function Main() {
       setIsCelsius(!isCelsius)
     }
 
+    console.log(weatherData)
+
+
+
 
   return (
     <div className={`h-full md:h-screen w-full ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'} p-6 mx-auto`}>
