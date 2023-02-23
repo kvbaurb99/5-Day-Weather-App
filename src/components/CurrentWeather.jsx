@@ -4,8 +4,9 @@ import { useState } from 'react';
 import Spring from '../images/spring.jpg'
 import Hot from '../images/hot.jpg'
 import Winter from '../images/winter.jpg'
+import NightWinter from '../images/nightwinter.jpg'
 
-export default function CurrentWeather({ weatherData, isCelsius }) {
+export default function CurrentWeather({ weatherData, isCelsius, isDark }) {
 
     const [currentDate, setCurrentDate] = useState('');
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
@@ -29,7 +30,7 @@ export default function CurrentWeather({ weatherData, isCelsius }) {
     }, []);
 
     return (
-      <div className='relative mt-8 shadow-lg shadow-gray-500 rounded-xl'>
+      <div className={`relative w-full mt-8 shadow-lg ${isDark ? 'shadow-gray-800' : 'shadow-gray-500'} rounded-xl mx-auto`}>
         { currentTemp && (
           <img
             src={

@@ -12,6 +12,7 @@ export default function Main() {
     const [cityReg, setCityReg] = useState()
     const [currentTemp, setCurrentTemp] = useState('');
     const [isCelsius, setIsCelsius] = useState(true)
+    const [isDark, setIsDark] = useState(false);
 
 
     // geolocation setting weather depending on your location
@@ -54,26 +55,20 @@ export default function Main() {
     }
 
     const handleToggle = () => {
-      setIsCelsius((prevState) => !prevState)
+      setIsCelsius(!isCelsius)
     }
 
 
-
-
-
-
-
-
   return (
-    <div className='h-screen w-[90%] bg-[#F5F5F5] p-4 mx-auto'>
+    <div className={`h-screen w-full ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'} p-6 mx-auto`}>
         
-        <TopBar setCityReg={setCityReg} findWeather={findWeather} cityReg={cityReg} currentTemp={currentTemp} isCelsius={isCelsius} handleToggle={handleToggle} />
+        <TopBar setCityReg={setCityReg} findWeather={findWeather} cityReg={cityReg} currentTemp={currentTemp} isCelsius={isCelsius} handleToggle={handleToggle} setIsDark={setIsDark} isDark={isDark} />
         { weatherData.list && weatherData.list.length ?
         <>
-        <CurrentWeather weatherData={weatherData} isCelsius={isCelsius} />
-        <div className='flex flex-col-reverse md:flex-row gap-10'>
-            <WeatherDetails weatherData={weatherData} isCelsius={isCelsius} />
-            <DailyTemp weatherData={weatherData} currentTemp={currentTemp} isCelsius={isCelsius} />
+        <CurrentWeather weatherData={weatherData} isCelsius={isCelsius} isDark={isDark} />
+        <div className='flex flex-col-reverse md:flex-row gap-10 w-full mx-auto'>
+            <WeatherDetails weatherData={weatherData} isCelsius={isCelsius} isDark={isDark} />
+            <DailyTemp weatherData={weatherData} currentTemp={currentTemp} isCelsius={isCelsius} isDark={isDark} />
         </div>
         </>
         : null

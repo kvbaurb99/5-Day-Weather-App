@@ -3,8 +3,9 @@ import { AiOutlineSearch } from 'react-icons/ai'
 
 import { useState } from 'react'
 import TemperatureSwitch from '../utils/TemperatureSwitch';
+import DarkSwitch from '../utils/DarkSwitch';
 
-export default function TopBar({setCityReg, findWeather, cityReg, currentTemp, isCelsius, handleToggle}) {
+export default function TopBar({setCityReg, findWeather, cityReg, currentTemp, isCelsius, handleToggle, setIsDark, isDark}) {
 
     const [searchInput , setSearchInput] = useState('')
     console.log(currentTemp)
@@ -48,11 +49,14 @@ export default function TopBar({setCityReg, findWeather, cityReg, currentTemp, i
             </p>
         </div>
         <form onSubmit={handleSearchSubmit} className='relative flex mt-4 md:mt-0'>
-            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder='Enter city name ...' type="text" className='border border-gray-400 outline-none rounded-lg px-2 md:py-2 w-full md:w-[450px]'  />
+            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder='Enter city name ...' type="text" className={`border border-gray-400 ${isDark ? 'bg-black/60' : 'bg-white'} ${isDark ? 'text-gray-300' : 'text-black'} outline-none rounded-lg px-2 md:py-2 w-full md:w-[450px]`}  />
             <AiOutlineSearch onClick={handleSearchSubmit} className='absolute right-1 top-2 md:right-2 md:bottom-2 text-lg md:text-2xl text-gray-400 cursor-pointer hover:text-black' />
             <input type="submit" value="" />
         </form>
+        <div className='flex items-center gap-8'>
         <TemperatureSwitch  isCelsius={isCelsius} handleToggle={handleToggle}/>
+        <DarkSwitch setIsDark={setIsDark} isDark={isDark} />
+        </div>
     </div>
   )
 }

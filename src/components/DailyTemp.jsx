@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useRef } from 'react';
 
 
-export default function DailyTemp({ weatherData, currentTemp, isCelsius }) {
+export default function DailyTemp({ weatherData, currentTemp, isCelsius, isDark }) {
     const [daysData, setDaysData] = useState([]);
     const containerRef = useRef(null);
 
@@ -27,7 +27,7 @@ export default function DailyTemp({ weatherData, currentTemp, isCelsius }) {
     };
     console.log(isCelsius)
     return (
-      <div   className={`md:w-[73%] h-[240px] rounded-xl mt-8 flex flex-col shadow-lg shadow-gray-500 relative ${
+      <div   className={`md:w-[73%] h-[240px] rounded-xl mt-8 flex flex-col shadow-lg ${isDark ? 'shadow-gray-800' : 'shadow-gray-500'} relative ${
         isCelsius
           ? currentTemp < 10
             ? 'bg-gray-400'
