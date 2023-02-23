@@ -10,6 +10,7 @@ Weather App with 5 days and 3 hours forecast, created with OpenWeather API.
 - Search input for displaying for own weather
 - Current time and weekday
 - Dark / Light mode
+- Responsive design for small devices
 
 ## Technologies
 - OpenWeather API free subscribe (5 day forecast)
