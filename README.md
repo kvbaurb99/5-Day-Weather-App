@@ -6,9 +6,10 @@ Weather App with 5 days and 3 hours forecast, created with OpenWeather API.
 - Changing photo and description depending on weather conditions, at this moment there is 3 categories of temperature
 - Scrollable 5 day forecast with updated weather for every 3 hours
 - Weather details (humidity, windspeed, feels like temperature, pressure)
-- Celsius temperature at this moment (fahrenheit in progress...)
+- Fahrenheit / Celsius temperature
 - Search input for displaying for own weather
 - Current time and weekday
+- Dark / Light mode
 
 ## Technologies
 - OpenWeather API free subscribe (5 day forecast)
@@ -18,9 +19,7 @@ Weather App with 5 days and 3 hours forecast, created with OpenWeather API.
 - Axios for fetching data
 
 ## In progress
-- Fahrenheit temperature
 - Google Places for showing images for displayed city
-- Dark Mode (?)
 
 ## Live page
 Page deployed on Netfliy: https://weather-kvbaurb-99.netlify.app/
