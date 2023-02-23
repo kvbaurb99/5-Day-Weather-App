@@ -16,9 +16,9 @@ export default function TopBar({setCityReg, findWeather, cityReg, currentTemp, i
       };
 
   return (
-    <div className='flex flex-col md:flex-row  justify-between'>
+    <div className='flex flex-col-reverse md:flex-row  justify-between'>
         <div>
-            <p className={`text-lg text-center md:text-start md:text-3xl ${
+            <p className={`text-lg text-center mt-2 md:mt-0 md:text-start md:text-3xl ${
                   isCelsius ?
                   currentTemp > 20 ? 'text-orange-500' :
                   currentTemp < 10 ? 'text-gray-500' :
@@ -48,11 +48,11 @@ export default function TopBar({setCityReg, findWeather, cityReg, currentTemp, i
             </p>
         </div>
         <form onSubmit={handleSearchSubmit} className='relative flex mt-4 md:mt-0'>
-            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder='Enter city name ...' type="text" className={`border border-gray-400 ${isDark ? 'bg-black/60' : 'bg-white'} ${isDark ? 'text-gray-300' : 'text-black'} outline-none rounded-lg px-2 md:py-2 w-full md:w-[450px]`}  />
+            <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder='Enter city name ...' type="text" className={`border border-gray-400 ${isDark ? 'bg-black/60' : 'bg-white'} ${isDark ? 'text-gray-300' : 'text-black'} outline-none rounded-lg px-2 py-1 md:py-2 w-full md:w-[450px]`}  />
             <AiOutlineSearch onClick={handleSearchSubmit} className='absolute right-1 top-2 md:right-2 md:bottom-2 text-lg md:text-2xl text-gray-400 cursor-pointer hover:text-black' />
             <input type="submit" value="" />
         </form>
-        <div className='flex items-center gap-8'>
+        <div className='flex items-center gap-8 justify-around'>
         <TemperatureSwitch  isCelsius={isCelsius} handleToggle={handleToggle}/>
         <DarkSwitch setIsDark={setIsDark} isDark={isDark} />
         </div>

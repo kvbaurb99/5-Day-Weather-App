@@ -31,6 +31,7 @@ export default function Main() {
         }
       }, []);
 
+     
     
       useEffect(() => {
         if (cityReg) {
@@ -47,7 +48,6 @@ export default function Main() {
       }, [cityReg, isCelsius, currentTemp]);
 
 
-
     // function for finding weather data
     const findWeather = (e) => {
         e.preventDefault()
@@ -62,13 +62,13 @@ export default function Main() {
 
 
   return (
-    <div className={`h-screen w-full ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'} p-6 mx-auto`}>
+    <div className={`h-full md:h-screen w-full ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'} p-6 mx-auto`}>
         
         <TopBar setCityReg={setCityReg} findWeather={findWeather} cityReg={cityReg} currentTemp={currentTemp} isCelsius={isCelsius} handleToggle={handleToggle} setIsDark={setIsDark} isDark={isDark} />
         { weatherData.list && weatherData.list.length ?
         <>
         <CurrentWeather weatherData={weatherData} isCelsius={isCelsius} isDark={isDark} />
-        <div className='flex flex-col-reverse md:flex-row gap-10 w-full mx-auto'>
+        <div className='flex flex-col-reverse md:flex-row gap-10'>
             <WeatherDetails weatherData={weatherData} isCelsius={isCelsius} isDark={isDark} />
             <DailyTemp weatherData={weatherData} currentTemp={currentTemp} isCelsius={isCelsius} isDark={isDark} />
         </div>

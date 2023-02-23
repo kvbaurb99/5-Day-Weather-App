@@ -64,6 +64,7 @@ export default function CurrentWeather({ weatherData, isCelsius, isDark }) {
         {!weatherData.length && (<div className='absolute bottom-0 right-0 text-white p-4'>
             <p className='text-right text-2xl font-bold'>{currentTime}</p>
             <p className='font-bold text-2xl hidden md:block'>Sunset time, {currentDate}</p>
+            <p className='font-bold text-lg text-right block md:hidden '>{currentDate}</p>
         </div>)}
       </div>
     )

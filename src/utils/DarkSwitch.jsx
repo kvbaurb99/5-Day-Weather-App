@@ -12,7 +12,7 @@ export default function DarkSwitch({isDark, setIsDark}) {
   };
 
   return (
-    <button onClick={handleToggle} className={`rounded-full p-2 text-xl ${styles[isDark ? 'dark' : 'light']}`}>
+    <button onClick={handleToggle} className={`rounded-full ${isDark ? 'hover:bg-white' : 'hover:bg-black'} ${isDark ? 'hover:text-black' : 'hover:text-white'} duration-500 p-2 text-xl ${styles[isDark ? 'dark' : 'light']}`}>
         {isDark ? <FaSun /> : <FaMoon />}
     </button>
   );
