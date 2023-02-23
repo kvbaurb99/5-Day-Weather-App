@@ -51,7 +51,7 @@ export default function CurrentWeather({ weatherData, isCelsius, isDark }) {
 )}
         {weatherData && weatherData.city && weatherData.list &&  (
           <div className='absolute bottom-0 left-0 text-white p-5'>
-            <img src={`http://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}.png`} alt='weather icon' />
+            <img src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}.png`} alt='weather icon' />
             <p className='text-6xl md:text-8xl font-bold mb-1'>
               {isCelsius
               ? currentTemp.toFixed(0)
