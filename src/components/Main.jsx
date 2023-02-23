@@ -11,6 +11,7 @@ export default function Main() {
     const [weatherData, setWeatherData] = useState([])
     const [cityReg, setCityReg] = useState()
     const [currentTemp, setCurrentTemp] = useState('');
+    const [isCelsius, setIsCelsius] = useState(true)
 
 
     // geolocation setting weather depending on your location
@@ -32,7 +33,7 @@ export default function Main() {
       useEffect(() => {
         if (cityReg) {
           axios
-            .get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=metric&appid=d35a78bd1d0ecc091d1ec60b14ee7345`)
+            .get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=${isCelsius ? 'metric' : 'imperial'}&appid=d35a78bd1d0ecc091d1ec60b14ee7345`)
             .then((res) => {
               setWeatherData(res.data);
               setCurrentTemp(res.data?.list?.[0]?.main?.temp);
@@ -41,7 +42,7 @@ export default function Main() {
               console.log('Error fetching weather data: ', error);
             });
         }
-      }, [cityReg]);
+      }, [cityReg, isCelsius, currentTemp]);
 
 
     // function for finding weather data
@@ -52,6 +53,11 @@ export default function Main() {
         })
     }
 
+    const handleToggle = () => {
+      setIsCelsius((prevState) => !prevState)
+    }
+
+
 
 
 
@@ -61,13 +67,13 @@ export default function Main() {
   return (
     <div className='h-screen w-[90%] bg-[#F5F5F5] p-4 mx-auto'>
         
-        <TopBar setCityReg={setCityReg} findWeather={findWeather} cityReg={cityReg} currentTemp={currentTemp} />
+        <TopBar setCityReg={setCityReg} findWeather={findWeather} cityReg={cityReg} currentTemp={currentTemp} isCelsius={isCelsius} handleToggle={handleToggle} />
         { weatherData.list && weatherData.list.length ?
         <>
-        <CurrentWeather weatherData={weatherData} />
+        <CurrentWeather weatherData={weatherData} isCelsius={isCelsius} />
         <div className='flex flex-col-reverse md:flex-row gap-10'>
-            <WeatherDetails weatherData={weatherData} />
-            <DailyTemp weatherData={weatherData} currentTemp={currentTemp} />
+            <WeatherDetails weatherData={weatherData} isCelsius={isCelsius} />
+            <DailyTemp weatherData={weatherData} currentTemp={currentTemp} isCelsius={isCelsius} />
         </div>
         </>
         : null

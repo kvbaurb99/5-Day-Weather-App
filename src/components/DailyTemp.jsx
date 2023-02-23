@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useRef } from 'react';
 
 
-export default function DailyTemp({ weatherData, currentTemp }) {
+export default function DailyTemp({ weatherData, currentTemp, isCelsius }) {
     const [daysData, setDaysData] = useState([]);
     const containerRef = useRef(null);
 
@@ -25,9 +25,26 @@ export default function DailyTemp({ weatherData, currentTemp }) {
         containerRef.current.scrollLeft += 500; 
       }
     };
-  
+    console.log(isCelsius)
     return (
-      <div className={`md:w-[73%] h-[240px] ${currentTemp < 10 ? 'bg-gray-400' : currentTemp > 20 ? 'bg-orange-400' : currentTemp > 10 && currentTemp < 20 ? 'bg-yellow-500' : null}  rounded-xl mt-8 flex flex-col shadow-lg shadow-gray-500 relative`}>
+      <div   className={`md:w-[73%] h-[240px] rounded-xl mt-8 flex flex-col shadow-lg shadow-gray-500 relative ${
+        isCelsius
+          ? currentTemp < 10
+            ? 'bg-gray-400'
+            : currentTemp > 20
+            ? 'bg-orange-400'
+            : currentTemp > 10 && currentTemp < 20
+            ? 'bg-purple-400'
+            : null
+          :
+           currentTemp < 50
+          ? 'bg-gray-400'
+          : currentTemp > 68
+          ? 'bg-orange-400'
+          : currentTemp >= 50 && currentTemp <= 68
+          ? 'bg-purple-400'
+          : null
+      }`}>
         <div className='p-4'>
           <p className='text-xl text-white font-bold tracking-wide text-center'>Hour 5 days temperature</p>
         </div>
@@ -42,10 +59,10 @@ export default function DailyTemp({ weatherData, currentTemp }) {
           >
             {daysData && daysData.map((item) => (
               <Day
-                date={new Date(item.dt_txt).toLocaleTimeString('en-US', {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false,
+              date={new Date(item.dt_txt).toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: isCelsius ? '2-digit' : undefined,
+                hour12: isCelsius ? false : true,
                 })}
                 img={item.weather[0].icon}
                 temp={item.main.temp}
@@ -54,6 +71,7 @@ export default function DailyTemp({ weatherData, currentTemp }) {
                     month: '2-digit',
                   }).replace(/\//g, '-')}
                   description={item.weather[0].main}
+                  isCelsius={isCelsius}
               />
             ))}
           </div>
