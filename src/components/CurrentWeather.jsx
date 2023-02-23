@@ -29,7 +29,7 @@ export default function CurrentWeather({ weatherData, isCelsius, isDark }) {
     }, []);
 
     return (
-      <div className={`relative w-full mt-8 shadow-lg ${isDark ? 'shadow-gray-800' : 'shadow-gray-500'} rounded-xl mx-auto`}>
+      <div className={`relative w-full mt-8 shadow-md ${isDark ? 'shadow-slate-400' : 'shadow-black'} rounded-xl mx-auto`}>
         { currentTemp && (
           <img
             src={

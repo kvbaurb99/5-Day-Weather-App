@@ -6,7 +6,7 @@ export default function WeatherDetails({weatherData, isCelsius, isDark}) {
 
 
   return (
-    <div className={`md:w-[25%] h-[240px] border border-gray-400 rounded-xl mt-8 flex justify-between shadow-lg ${isDark ? 'shadow-gray-800' : 'shadow-gray-500'}`}>   
+    <div className={`md:w-[25%] h-[240px] border border-gray-400 rounded-xl mt-8 flex justify-between shadow-md ${isDark ? 'shadow-slate-400' : 'shadow-black'}`}>   
     <div className='flex flex-col border-r border-gray-400/60 h-[90%] w-[50%] md:w-[250px] justify-around m-auto ml-4 md:ml-8'>
       <div className='flex items-center'>
         <BsDropletFill className='text-4xl text-blue-600' />

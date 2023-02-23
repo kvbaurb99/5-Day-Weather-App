@@ -12,7 +12,7 @@ export default function Main() {
     const [cityReg, setCityReg] = useState()
     const [currentTemp, setCurrentTemp] = useState('');
     const [isCelsius, setIsCelsius] = useState(true)
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(true);
 
 
     // geolocation setting weather depending on your location
@@ -59,13 +59,12 @@ export default function Main() {
       setIsCelsius(!isCelsius)
     }
 
-    console.log(weatherData)
 
 
 
 
   return (
-    <div className={`h-full md:h-screen w-full ${isDark ? 'bg-black' : 'bg-[#F5F5F5]'} p-6 mx-auto`}>
+    <div className={`h-full md:h-screen w-full ${isDark ? 'bg-black' : 'bg-slate-200'} p-6 mx-auto`}>
         
         <TopBar setCityReg={setCityReg} findWeather={findWeather} cityReg={cityReg} currentTemp={currentTemp} isCelsius={isCelsius} handleToggle={handleToggle} setIsDark={setIsDark} isDark={isDark} />
         { weatherData.list && weatherData.list.length ?
