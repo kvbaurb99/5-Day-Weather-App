@@ -50,8 +50,7 @@ export default function Main() {
 
     // function for finding weather data
     const findWeather = (e) => {
-        e.preventDefault()
-        axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`).then(res => {
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityReg}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`).then(res => {
             setWeatherData(res.data)
         })
     }

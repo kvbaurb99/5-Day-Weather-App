@@ -56,8 +56,9 @@ export default function DailyTemp({ weatherData, currentTemp, isCelsius, isDark 
             className='flex overflow-x-scroll scrollbar-hide gap-8 w-full'
             style={{ maxWidth: '100%', scrollBehavior: 'smooth' }}
           >
-            {daysData && daysData.map((item) => (
+            {daysData && daysData.map((item, index) => (
               <Day
+              key={index.name}
               date={new Date(item.dt_txt).toLocaleTimeString('en-US', {
                 hour: 'numeric',
                 minute: isCelsius ? '2-digit' : undefined,
